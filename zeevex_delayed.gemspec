@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Robert Sanders"]
   s.email       = ["robert@zeevex.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Basic and per-thread promise classes.}
+  s.description = %q{This gem provides a couple of classes useful for deferred computation.}
 
   s.rubyforge_project = "zeevex_delayed"
 
