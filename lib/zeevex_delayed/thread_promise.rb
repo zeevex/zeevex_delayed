@@ -16,6 +16,14 @@ module ZeevexDelayed
   # go, don't use this.
   #
 
+  def self.ThreadPromise(*args, &block)
+    ZeevexDelayed::ThreadPromise.new(*args, &block)
+  end
+
+  def self.thread_promise(*args, &block)
+    ZeevexDelayed::ThreadPromise.new(*args, &block)
+  end
+
   class ThreadPromise < ZeevexProxy::Base
 
     def initialize(obj=nil, &block)

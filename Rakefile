@@ -29,4 +29,10 @@ namespace :spec do
   end
 end
 
+
+task :repl do
+  sh %q{ bundle exec irb -Ilib -rzeevex_delayed }
+end
+
+
 task :default => 'spec'
