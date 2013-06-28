@@ -61,7 +61,7 @@ shared_examples_for "basic promise" do
   context "when forcing computation" do
     it "should respond to __force__" do
       # check here because respond_to? invoked on a promise would delegate
-      promise_class.instance_methods.should include("__force__")
+      promise_class.instance_methods.map(&:to_s).should include("__force__")
     end
 
     it "should be computed when Kernel#force_promise is called" do
