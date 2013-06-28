@@ -24,11 +24,11 @@ module ZeevexDelayed
     ZeevexDelayed::ThreadPromise.new(*args, &block)
   end
 
-  class ThreadPromise < ZeevexProxy::Base
+  class ThreadPromise < ZeevexProxy::BasicObject
 
-    def initialize(obj=nil, &block)
-      raise ArgumentError, "Must supply a block!" unless block_given?
-      super
+    def initialize(&block)
+      raise ::ArgumentError, "Must supply a block!" unless ::Kernel.block_given?
+      super()
       @__promise_thread_map = {}
       @__promise_block = block
     end
@@ -38,10 +38,10 @@ module ZeevexDelayed
     end
 
     def __force__
-      unless @__promise_thread_map.has_key?(Thread.current.object_id)
-        @__promise_thread_map[Thread.current.object_id] = @__promise_block.call
+      unless @__promise_thread_map.has_key?(::Thread.current.object_id)
+        @__promise_thread_map[::Thread.current.object_id] = @__promise_block.call
       end
-      @__promise_thread_map[Thread.current.object_id]
+      @__promise_thread_map[::Thread.current.object_id]
     end
   end
 end

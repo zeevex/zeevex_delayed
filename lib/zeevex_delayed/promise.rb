@@ -9,12 +9,12 @@ module ZeevexDelayed
     ZeevexDelayed::Promise.new(*args, &block)
   end
   
-  class Promise < ZeevexProxy::Base
+  class Promise < ZeevexProxy::BasicObject
 
-    def initialize(obj=nil, &block)
-      super
+    def initialize(&block)
+      raise ::ArgumentError, "Must supply a block!" unless block
+      super()
       @__promise_block = block
-      raise ArgumentError, "Must supply a block!" unless block
     end
 
     def method_missing(name, *args, &block)
